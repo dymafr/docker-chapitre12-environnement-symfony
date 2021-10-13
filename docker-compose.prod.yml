@@ -11,6 +11,7 @@ services:
         target: /certs
     depends_on:
       - fpm
+      - node
 
     ports:
       - 80:80
