@@ -9,6 +9,8 @@ services:
       - type: bind
         source: /root/.acme.sh/dymawonder.fr
         target: /certs
+    depends_on:
+      - fpm
 
     ports:
       - 80:80
@@ -33,6 +35,8 @@ services:
       - type: bind
         target: /app
         source: .
+    depends_on:
+      - mysql
 
   node:
     build:
