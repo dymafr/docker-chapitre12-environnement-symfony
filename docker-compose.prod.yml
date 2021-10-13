@@ -5,9 +5,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.nginx
-    # volumes:
-    #   - type: bind
-    #     source:
+    volumes:
+      - type: bind
+        source: /root/.acme.sh/dymawonder.fr
+        target: /certs
+
     ports:
       - 80:80
       - 443:443
