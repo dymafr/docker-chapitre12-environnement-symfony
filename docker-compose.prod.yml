@@ -9,9 +9,11 @@ services:
       - type: bind
         source: /root/.acme.sh/dymawonder.fr
         target: /certs
+      - type: bind
+        source: .
+        target: /app
     depends_on:
       - fpm
-      - node
 
     ports:
       - 80:80
