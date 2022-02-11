@@ -7,21 +7,38 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
   Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
-Encore
-  // directory where compiled assets will be stored
-  .setOutputPath('public/build/')
-  // public path used by the web server to access the output path
-  .setPublicPath('/build')
+if (!Encore.isProduction()) {
+  Encore
+    // directory where compiled assets will be stored
+    .setOutputPath('public/build/')
+    // public path used by the web server to access the output path
+    .setPublicPath('https://localhost:8080/build')
+    // only needed for CDN's or sub-directory deploy
+    .setManifestKeyPrefix('build/')
+
+} else {
+  Encore
+    // directory where compiled assets will be stored
+    .setOutputPath('public/build/')
+    // public path used by the web server to access the output path
+    .setPublicPath('/build')
   // only needed for CDN's or sub-directory deploy
   //.setManifestKeyPrefix('build/')
 
-  /*
-   * ENTRY CONFIG
-   *
-   * Each entry will result in one JavaScript file (e.g. app.js)
-   * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
-   */
-  .addEntry('app', './assets/app.ts')
+}
+
+Encore.configureWatchOptions(function (watchOptions) {
+  watchOptions.ignored = /node_modules/;
+  watchOptions.poll = 1000;
+})
+
+/*
+ * ENTRY CONFIG
+ *
+ * Each entry will result in one JavaScript file (e.g. app.js)
+ * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
+ */
+Encore.addEntry('app', './assets/app.ts')
   .addStyleEntry('question_show', './assets/styles/question_show.scss')
 
   .copyFiles({
@@ -52,6 +69,7 @@ Encore
   .enableSourceMaps(!Encore.isProduction())
   // enables hashed filenames (e.g. app.abc123.css)
   .enableVersioning(Encore.isProduction())
+
 
   .configureBabel(config => {
     config.plugins.push('@babel/plugin-proposal-class-properties');
@@ -84,6 +102,14 @@ Encore.configureDevServerOptions(options => {
       '.symfony/certs/default.p12',
     ),
   };
+
+  options.client = {
+    webSocketURL: {
+      hostname: "0.0.0.0",
+      pathname: "/ws",
+      port: 8080,
+    }
+  }
   options.allowedHosts = 'all';
 });
 
