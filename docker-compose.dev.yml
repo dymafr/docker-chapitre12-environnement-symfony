@@ -3,10 +3,13 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8.0
-    command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Pomme123;
+      MYSQL_ROOT_PASSWORD: 'Pomme123123'
+      MYSQL_DATABASE: 'quora'
+      MYSQL_USER: 'test'
+      MYSQL_PASSWORD: 'Pomme123123'
+      MYSQL_ROOT_HOST: '%'
     volumes:
       - type: volume
         source: dbtest
