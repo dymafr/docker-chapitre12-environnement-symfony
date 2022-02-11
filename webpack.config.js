@@ -27,6 +27,7 @@ if (!Encore.isProduction()) {
 
 }
 
+//test
 Encore.configureWatchOptions(function (watchOptions) {
   watchOptions.ignored = /node_modules/;
   watchOptions.poll = 1000;
