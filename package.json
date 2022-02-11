@@ -1,17 +1,17 @@
 {
     "devDependencies": {
-        "@hotwired/stimulus": "^3.0.0",
+        "@hotwired/stimulus": "^3.0.1",
         "@symfony/stimulus-bridge": "^3.0.0",
-        "@symfony/webpack-encore": "^1.7.0",
-        "core-js": "^3.0.0",
-        "file-loader": "^6.0.0",
-        "regenerator-runtime": "^0.13.2",
-        "sass": "^1.39.0",
-        "sass-loader": "^12.0.0",
-        "stimulus": "^2.0.0",
-        "ts-loader": "^9.0.0",
-        "typescript": "^4.4.2",
-        "webpack-notifier": "^1.6.0"
+        "@symfony/webpack-encore": "^1.8.1",
+        "core-js": "^3.21.0",
+        "file-loader": "^6.2.0",
+        "regenerator-runtime": "^0.13.9",
+        "sass": "^1.49.7",
+        "sass-loader": "^12.4.0",
+        "stimulus": "^3.0.1",
+        "ts-loader": "^9.2.6",
+        "typescript": "^4.5.5",
+        "webpack-notifier": "^1.15.0"
     },
     "license": "UNLICENSED",
     "private": true,
@@ -22,8 +22,8 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "@vue/compiler-sfc": "^3.2.7",
-        "vue": "^3.2.7",
-        "vue-loader": "^16.5.0"
+        "@vue/compiler-sfc": "^3.2.30",
+        "vue": "^3.2.30",
+        "vue-loader": "^17.0.0"
     }
 }
